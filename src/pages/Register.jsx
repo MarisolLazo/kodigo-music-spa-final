@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import Home from "./Home";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Componente de registro de usuario.
@@ -9,6 +10,7 @@ import Home from "./Home";
  */
 const Register = ({ onRegister }) => {
   // Estado para cada campo del formulario
+  const navigate = useNavigate();
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,7 +20,7 @@ const Register = ({ onRegister }) => {
     e.preventDefault(); // Evita que la página se recargue
     // Verifica que los campos no estén vacíos antes de llamar a onRegister
     if (userName && email && password) {
-      window.location.href = "/home"; // Redirige a la página de inicio
+      navigate("/home");
     } else {
       console.log("Por favor, completa todos los campos.");
     }
